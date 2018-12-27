@@ -1,0 +1,6 @@
+framework module Pods_Appetiser_NamocUITests {
+  umbrella header "Pods-Appetiser_NamocUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
