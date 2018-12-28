@@ -9,7 +9,10 @@
 import Foundation
 
 let APPNAME = "Appetiser Challenge"
+
 internal let bMain = "Main"
+
+internal let INDICATORSIZE = 35.0
 
 struct VC
 {

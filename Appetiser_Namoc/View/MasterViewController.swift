@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class MasterViewController: UITableViewController {
 
@@ -17,15 +18,16 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restorationIdentifier = "MasterViewController"
-
         self.title = "Top Movies"
         self.setup()
     }
     
     // MARK: ALL LOGIC
     func setup(){
+        NVActivityIndicatorView.showActivityIndicator(message: "", size: CGFloat(INDICATORSIZE), color: UIColor.red)
         self.masterViewModel.searchMedia()
         self.masterViewModel.didUpdate = { [weak self]  in
+            NVActivityIndicatorView.hideActivityIndicator()
             self!.tableView.reloadData()
         }
         self.masterViewModel.hasError = { error in
@@ -71,18 +73,12 @@ extension MasterViewController{
     
     override func encodeRestorableState(with coder: NSCoder) {
         super.encodeRestorableState(with: coder)
-        // preserve all user model object.
-//        coder.encode(self.masterViewModel.mediaResult, forKey: "MediaArray")
     }
    
     override func decodeRestorableState(with coder: NSCoder) {
         super.decodeRestorableState(with: coder)
-//        if let arr = coder.decodeObject(forKey: "MediaArray") as? [MediaResult]{
-//            self.masterViewModel.mediaResult = arr
-//        }
     }
     override func applicationFinishedRestoringState() {
-        print("HomeVC finished restoring")
         self.tableView.reloadData()
 
     }

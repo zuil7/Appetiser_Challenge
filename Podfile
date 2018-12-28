@@ -11,6 +11,8 @@ target 'Appetiser_Namoc' do
   pod 'Gloss'
   pod 'ReachabilitySwift'
   pod 'RealmSwift'
+  pod 'NVActivityIndicatorView'
+
 
 
   target 'Appetiser_NamocTests' do
@@ -24,5 +26,3 @@ target 'Appetiser_Namoc' do
   end
 
 end
-
-Carinna@se7en

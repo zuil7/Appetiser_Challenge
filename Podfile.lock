@@ -3,6 +3,9 @@ PODS:
   - AlamofireImage (3.4.1):
     - Alamofire (~> 4.7)
   - Gloss (2.0.1)
+  - NVActivityIndicatorView (4.4.0):
+    - NVActivityIndicatorView/Presenter (= 4.4.0)
+  - NVActivityIndicatorView/Presenter (4.4.0)
   - ReachabilitySwift (4.3.0)
   - Realm (3.11.2):
     - Realm/Headers (= 3.11.2)
@@ -14,6 +17,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Gloss
+  - NVActivityIndicatorView
   - ReachabilitySwift
   - RealmSwift
 
@@ -22,6 +26,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Gloss
+    - NVActivityIndicatorView
     - ReachabilitySwift
     - Realm
     - RealmSwift
@@ -30,10 +35,11 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   Gloss: 1e8743f8de1fbe14a97f220ff901cba91ae5f8f8
+  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Realm: 864477d028db77f7c5a0cba64a4892ad53db128a
   RealmSwift: 12b8262fc08020b47de4fd88eb3d5c9425b34ec7
 
-PODFILE CHECKSUM: e8ceff57a8abc7d049e27329ad1ea61155f2429a
+PODFILE CHECKSUM: a44ceeef0ba60bbd9ae87122f631eb4779f88244
 
 COCOAPODS: 1.5.3
