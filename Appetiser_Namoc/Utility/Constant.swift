@@ -9,3 +9,12 @@
 import Foundation
 
 let APPNAME = "Appetiser Challenge"
+internal let bMain = "Main"
+
+struct VC
+{
+    //STORYBOARD - Main
+    static let vc_MasterViewController = "MasterViewController"
+    static let vc_DetailViewController = "DetailViewController"
+  
+}

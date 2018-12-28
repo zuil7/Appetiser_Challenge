@@ -30,6 +30,7 @@
 		4862377021D3804D00E136D0 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4862376F21D3804D00E136D0 /* DetailViewModel.swift */; };
 		4862377221D470D500E136D0 /* UIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4862377121D470D500E136D0 /* UIViewController_Extension.swift */; };
 		4862377421D4713B00E136D0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4862377321D4713B00E136D0 /* Constant.swift */; };
+		4862377621D5E51700E136D0 /* UIStoryboard_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4862377521D5E51700E136D0 /* UIStoryboard_Extension.swift */; };
 		F72E6E4822DB066366AFF0A1 /* Pods_Appetiser_NamocUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2196CF7020E487A24F469638 /* Pods_Appetiser_NamocUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		4862376F21D3804D00E136D0 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		4862377121D470D500E136D0 /* UIViewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController_Extension.swift; sourceTree = "<group>"; };
 		4862377321D4713B00E136D0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4862377521D5E51700E136D0 /* UIStoryboard_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard_Extension.swift; sourceTree = "<group>"; };
 		6130F62AF063EADFDBB2949F /* Pods-Appetiser_Namoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appetiser_Namoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Appetiser_Namoc/Pods-Appetiser_Namoc.release.xcconfig"; sourceTree = "<group>"; };
 		76333E34E8AFD89DD60358AC /* Pods_Appetiser_NamocTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Appetiser_NamocTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E332358DDB76301F48E518 /* Pods-Appetiser_Namoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appetiser_Namoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Appetiser_Namoc/Pods-Appetiser_Namoc.debug.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				4862376621D36A2300E136D0 /* UIImageView_Extension.swift */,
 				4862377121D470D500E136D0 /* UIViewController_Extension.swift */,
+				4862377521D5E51700E136D0 /* UIStoryboard_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				4862375321D0F95500E136D0 /* NetworkService.swift in Sources */,
 				4862375621D0FBEB00E136D0 /* API_ENDPOINT.swift in Sources */,
 				4862376121D3648000E136D0 /* MediaCell.swift in Sources */,
+				4862377621D5E51700E136D0 /* UIStoryboard_Extension.swift in Sources */,
 				4862375821D0FEC200E136D0 /* MasterViewModel.swift in Sources */,
 				4862376921D36B4000E136D0 /* UIImageViewDesignable.swift in Sources */,
 				4862376B21D37E8A00E136D0 /* RealmService.swift in Sources */,

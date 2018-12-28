@@ -16,15 +16,8 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-            self.detailViewController!.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-            self.detailViewController!.navigationItem.leftItemsSupplementBackButton = true
-            detailViewController?.detailViewModel.checkUserSelected{ (response) in
-                self.detailViewController?.media = response
-            }
-        }
+        self.restorationIdentifier = "MasterViewController"
+
         self.title = "Top Movies"
         self.setup()
     }
@@ -41,26 +34,9 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
-
-    // MARK: - Segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                let media = self.masterViewModel.mediaResult[indexPath.row]
-                controller.detailViewModel.saveSelectedMedia(media: media, response:{ (result) in
-                    controller.media = result
-                })
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
-                
-            }
-        }
-    }
-
+    
     // MARK: - Table View
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -78,7 +54,36 @@ class MasterViewController: UITableViewController {
         return cell
     }
 
- 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = (UIStoryboard.SB_LoadBoard(boardName: bMain, storyBoardID: VC.vc_DetailViewController) as! DetailViewController)
+        detailViewController.modalPresentationStyle = .overCurrentContext
+        let media = self.masterViewModel.mediaResult[indexPath.row]
+        detailViewController.detailViewModel.saveSelectedMedia(media: media, response:{ (result) in
+            detailViewController.media = result
+        })
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
 
 }
 
+//  MARK:- UIViewControllerRestoration
+extension MasterViewController{
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+        // preserve all user model object.
+//        coder.encode(self.masterViewModel.mediaResult, forKey: "MediaArray")
+    }
+   
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+//        if let arr = coder.decodeObject(forKey: "MediaArray") as? [MediaResult]{
+//            self.masterViewModel.mediaResult = arr
+//        }
+    }
+    override func applicationFinishedRestoringState() {
+        print("HomeVC finished restoring")
+        self.tableView.reloadData()
+
+    }
+}

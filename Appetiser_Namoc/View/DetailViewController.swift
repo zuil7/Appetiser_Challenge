@@ -51,3 +51,38 @@ class DetailViewController: UIViewController {
 
 }
 
+//  MARK:- UIViewControllerRestoration
+extension DetailViewController: UIViewControllerRestoration{
+    static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+        guard let restoredUser = coder.decodeObject(forKey: "Media") as? MediaSelected else {
+            print("decoding User Detail")
+            return nil
+        }
+        if let storyboard = coder.decodeObject(forKey: UIApplication.stateRestorationViewControllerStoryboardKey) as? UIStoryboard{
+            if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController{
+                vc.media = restoredUser
+                return vc;
+            }
+        }
+        return nil;    }
+    
+
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+        // preserve user model object.
+        //coder.encode(self.media, forKey: "Media")
+       
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+        self.detailViewModel.checkUserSelected{ (response) in
+            self.media = response
+        }
+    }
+    
+    override func applicationFinishedRestoringState() {
+        print("HomeDetailVC finished restoring")
+        self.loadValues()        
+    }
+}

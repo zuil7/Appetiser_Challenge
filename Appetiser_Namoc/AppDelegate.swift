@@ -22,11 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //Setup Realm Configuration
         self.realmSetup()
         
-        // Override point for customization after application launch.
-        let splitViewController = window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-        splitViewController.delegate = self
+
         return true
     }
 
@@ -52,18 +48,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // MARK: - Split view
 
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
-        if topAsDetailController.media == nil {
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-            return true
-        }
-        return false
+    // MARK: - State Restoration protocol adopted by UIApplication delegate
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        return true
     }
+    
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+        self.realmSetup()
+        return true
+    }
+    
+    func application(_ application: UIApplication, willEncodeRestorableStateWith coder: NSCoder) {
+        // encode any state at the app delegate level
+        
+    }
+    
+    func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
+        UIApplication.shared.extendStateRestoration()
+        DispatchQueue.main.async {
+            UIApplication.shared.completeStateRestoration()
+        }
 
+        if let restoreBundleVersion =   coder.decodeObject(forKey: UIApplication.stateRestorationBundleVersionKey) as? String{
+            print("Restore bundle version: \(restoreBundleVersion)")
+        }
+
+        if let restoreUserInterfaceIdiom =   coder.decodeObject(forKey: UIApplication.stateRestorationUserInterfaceIdiomKey) as? Int{
+            print("Restore User Interface Idiom: \(restoreUserInterfaceIdiom)")
+        }
+    }
 }
 
 extension AppDelegate {
